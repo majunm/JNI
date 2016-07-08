@@ -1,0 +1,20 @@
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+LOCAL_LDLIBS    := -lm -llog -landroid
+#LOCAL_MODULE    := itmac
+LOCAL_MODULE    := qih
+#========================src list===========================
+#LOCAL_SRC_FILES := readAssets.cpp
+#LOCAL_SRC_FILES := hello-jni.c
+#引用编译jni目标下src目录下的 所有的后缀为.cpp文件
+SRC_LIST := $(wildcard $(LOCAL_PATH)/src/*.cpp) 
+#去掉 jni/头  比如 现在的目录是 jni/JNI.cpp 实际编译是JNI.cpp文件(jni/)不参与编译,故去掉它
+#http://blog.csdn.net/fu_zk/article/details/12836431 jni语法
+LOCAL_SRC_FILES += $(SRC_LIST:$(LOCAL_PATH)/%=%)
+#========================src list===========================
+
+include $(BUILD_SHARED_LIBRARY)
+==============================
+D:\WorkSpace\Tool\android-ndk-r10\platforms\android-19\arch-arm\usr\include
+D:\WorkSpace\Tool\android-ndk-r10\toolchains\arm-linux-androideabi-4.8\prebuilt\windows-x86_64\lib\gcc\arm-linux-androideabi\4.8\include
