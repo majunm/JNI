@@ -15,8 +15,14 @@ public class MainActivity extends Activity {
 		test = (TextView) findViewById(R.id.tst);
 		String stTst = Jni.stTst();
 		Jni j = new Jni();
-		test.setText("静态方法:" + stTst + "\n非静态方法:" + j.tst());
-
+		test.setText("静态方法:" + stTst + "\n非静态方法:" + j.tst() + "\n非静态方法:"
+				+ j.obtainStr() + "\n非静态方法-path:" + j.obtainPath(this)
+				+ "\n非静态方法-1:" + j.obtainTaskUrl(1)
+				+ "\n非静态方法-2:" + j.obtainTaskUrl(2)
+				+ "\n非静态方法-3:" + j.obtainTaskUrl(3)
+				+ "\n非静态方法-4:" + j.obtainTaskUrl(4)
+				);
+		j.hel(this, 1);
 	}
 
 }
